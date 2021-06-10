@@ -30,49 +30,6 @@ struct Node
 	}
 };
 
-class Line
-{
-	static int hight = 0;
-
-	Node* leaf = nullptr;
-	Node* next = nullptr;
-
-	Line() {}
-
-	Line(Node * n)
-	{
-		createLine(n, nullptr);
-	}
-
-
-	void createLine(Node * n, Line* current)
-	{
-		for (int i = hight; i > 0; --i)
-		{
-			n = n->parrent;
-		}
-		if (n != nullptr)
-		{
-			if (n->parrent == nullptr)
-			{
-				leaf = n;
-				next = nullptr;
-			}
-			else
-			{
-				leaf = n->parrent->child[0];
-				next = n->parrent->child[1];
-				createLine(n->parrent, 1);
-			}
-		}
-		else 
-		{
-			leaf = nullptr;
-			next = nullptr;
-		}
-	}
-}
-
 
 void insert(Node*& n);
 void insert(Node*& n, int data);
